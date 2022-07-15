@@ -12,13 +12,13 @@ public class estabelecimento {
     @Column(nullable = false, name = "nome")
     private String nome;
 
-    @Column(nullable = false, name = "cnpj", unique = true, length = 13)
+    @Column(nullable = false, name = "cnpj", unique = true, length = 14)
     private String cnpj;
 
     @Column(nullable = false, name = "endereco")
     private String endereco;
 
-    @Column(nullable = false, name = "telefone", unique = true, length = 10)
+    @Column(nullable = false, name = "telefone", unique = true, length = 11)
     private String telefone;
 
     @Column(nullable = false, name = "vagas_motos")
