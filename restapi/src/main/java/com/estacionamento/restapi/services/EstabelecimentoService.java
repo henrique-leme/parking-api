@@ -27,5 +27,9 @@ public class EstabelecimentoService {
        } 
     }
 
+    public estabelecimento create(estabelecimento estabelecimento) {   
+        return estabelecimentoRepository.save(estabelecimento);
+    }
+
     
 }
