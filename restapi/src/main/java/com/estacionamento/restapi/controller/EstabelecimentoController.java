@@ -37,6 +37,11 @@ public class EstabelecimentoController {
     public estabelecimento create(@RequestBody estabelecimento estabelecimento) { 
         return estabelecimentoService.create(estabelecimento);
     }
+
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable Integer id) {
+        estabelecimentoService.delete(id);
+    }
 }
     
 
