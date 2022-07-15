@@ -28,6 +28,10 @@ public class EstabelecimentoController {
         return estabelecimentoService.findAll();
     }
 
+    @GetMapping(path = "/{id}")
+    public estabelecimento findById(@PathVariable Integer id) {
+        return estabelecimentoService.findById(id);
+    }
 }
     
 
