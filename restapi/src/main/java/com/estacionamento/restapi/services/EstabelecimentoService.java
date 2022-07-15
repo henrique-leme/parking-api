@@ -31,5 +31,9 @@ public class EstabelecimentoService {
         return estabelecimentoRepository.save(estabelecimento);
     }
 
+    public void delete(Integer id) {
+        estabelecimentoRepository.deleteById(id);
+    }
+
     
 }
