@@ -20,6 +20,12 @@ public class EstabelecimentoService {
         return estabelecimentoRepository.findAll();
     }
 
+    public estabelecimento findById(Integer id) {
+        Optional<estabelecimento> estabelecimento = estabelecimentoRepository.findById(id);      
+        if (estabelecimento.isPresent()); {
+            return estabelecimento.get();
+       } 
+    }
 
     
 }
