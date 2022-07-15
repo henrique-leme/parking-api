@@ -32,6 +32,11 @@ public class EstabelecimentoController {
     public estabelecimento findById(@PathVariable Integer id) {
         return estabelecimentoService.findById(id);
     }
+
+    @PostMapping(path = "/create")
+    public estabelecimento create(@RequestBody estabelecimento estabelecimento) { 
+        return estabelecimentoService.create(estabelecimento);
+    }
 }
     
 
