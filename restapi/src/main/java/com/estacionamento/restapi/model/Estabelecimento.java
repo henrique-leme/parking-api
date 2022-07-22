@@ -1,8 +1,6 @@
 package com.estacionamento.restapi.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Estabelecimentos")
@@ -15,16 +13,12 @@ public class estabelecimento {
     private String nome;
 
     @Column(nullable = false, name = "cnpj", unique = true, length = 14)
-    @Size(min = 14, max = 14)
-    @Pattern(regexp = "^[0-9]*")
     private String cnpj;
 
     @Column(nullable = false, name = "endereco")
     private String endereco;
 
     @Column(nullable = false, name = "telefone", unique = true, length = 11)
-    @Size(min = 11, max = 11)
-    @Pattern(regexp = "^[0-9]*")
     private String telefone;
 
     @Column(nullable = false)
@@ -46,7 +40,11 @@ public class estabelecimento {
             String cnpj,
             String endereco,
             String telefone,
-            int vagas_motos, int vagas_carros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados) {
+            int vagas_motos, 
+            int vagas_carros, 
+            int numeroDeCarrosEstacionados, 
+            int numeroDeMotosEstacionados
+            ) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
