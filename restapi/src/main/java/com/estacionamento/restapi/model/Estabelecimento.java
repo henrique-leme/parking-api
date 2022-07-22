@@ -21,11 +21,11 @@ public class estabelecimento {
     @Column(nullable = false, name = "telefone", unique = true, length = 11)
     private String telefone;
 
-    @Column(nullable = false)
-    private int vagas_motos;
+    @Column(nullable = false, name = "vagasMotos")
+    private int vagasMotos;
 
-    @Column(nullable = false)
-    private int vagas_carros;
+    @Column(nullable = false, name = "vagasCarros")
+    private int vagasCarros;
 
     @Column(nullable = false)
     private int numeroDeCarrosEstacionados;
@@ -40,8 +40,8 @@ public class estabelecimento {
             String cnpj,
             String endereco,
             String telefone,
-            int vagas_motos, 
-            int vagas_carros, 
+            int vagasMotos, 
+            int vagasCarros, 
             int numeroDeCarrosEstacionados, 
             int numeroDeMotosEstacionados
             ) {
@@ -49,8 +49,8 @@ public class estabelecimento {
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.vagas_motos = vagas_motos;
-        this.vagas_carros = vagas_carros;
+        this.vagasMotos = vagasMotos;
+        this.vagasCarros = vagasCarros;
         this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
         this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
     }
@@ -111,19 +111,19 @@ public class estabelecimento {
         this.telefone = telefone;
     }
 
-    public int getVagas_motos() {
-        return vagas_motos;
+    public int getVagasMotos() {
+        return vagasMotos;
     }
 
-    public void setVagas_motos(int vagas_motos) {
-        this.vagas_motos = vagas_motos;
+    public void setVagasMotos(int vagasMotos) {
+        this.vagasMotos = vagasMotos;
     }
 
-    public int getVagas_carros() {
-        return vagas_carros;
+    public int getVagasCarros() {
+        return vagasCarros;
     }
 
-    public void setVagas_carros(int vagas_carros) {
-        this.vagas_carros = vagas_carros;
+    public void setVagasCarros(int vagasCarros) {
+        this.vagasCarros = vagasCarros;
     }
 }
