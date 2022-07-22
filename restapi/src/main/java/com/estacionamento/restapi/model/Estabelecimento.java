@@ -1,6 +1,8 @@
 package com.estacionamento.restapi.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Estabelecimentos")
@@ -13,30 +15,62 @@ public class estabelecimento {
     private String nome;
 
     @Column(nullable = false, name = "cnpj", unique = true, length = 14)
+    @Size(min = 14, max = 14)
+    @Pattern(regexp = "^[0-9]*")
     private String cnpj;
 
     @Column(nullable = false, name = "endereco")
     private String endereco;
 
     @Column(nullable = false, name = "telefone", unique = true, length = 11)
+    @Size(min = 11, max = 11)
+    @Pattern(regexp = "^[0-9]*")
     private String telefone;
 
-    @Column(nullable = false, name = "vagas_motos")
-    private String vagas_motos;
+    @Column(nullable = false)
+    private int vagas_motos;
 
-    @Column(nullable = false, name = "vagas_carros")
-    private String vagas_carros;
+    @Column(nullable = false)
+    private int vagas_carros;
+
+    @Column(nullable = false)
+    private int numeroDeCarrosEstacionados;
+
+    @Column(nullable = false)
+    private int numeroDeMotosEstacionados;
 
     public estabelecimento() {
     }
 
-    public estabelecimento(String nome, String cnpj, String endereco, String telefone, String vagas_motos, String vagas_carros) {
+    public estabelecimento(String nome,
+            String cnpj,
+            String endereco,
+            String telefone,
+            int vagas_motos, int vagas_carros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.telefone = telefone;
         this.vagas_motos = vagas_motos;
         this.vagas_carros = vagas_carros;
+        this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
+        this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
+    }
+
+    public int getNumeroDeCarrosEstacionados() {
+        return numeroDeCarrosEstacionados;
+    }
+
+    public void setNumeroDeCarrosEstacionados(int numeroDeCarrosEstacionados) {
+        this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
+    }
+
+    public int getNumeroDeMotosEstacionados() {
+        return numeroDeMotosEstacionados;
+    }
+
+    public void setNumeroDeMotosEstacionados(int numeroDeMotosEstacionados) {
+        this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
     }
 
     public int getId() {
@@ -79,19 +113,19 @@ public class estabelecimento {
         this.telefone = telefone;
     }
 
-    public String getVagas_motos() {
+    public int getVagas_motos() {
         return vagas_motos;
     }
 
-    public void setVagas_motos(String vagas_motos) {
+    public void setVagas_motos(int vagas_motos) {
         this.vagas_motos = vagas_motos;
     }
 
-    public String getVagas_carros() {
+    public int getVagas_carros() {
         return vagas_carros;
     }
 
-    public void setVagas_carros(String vagas_carros) {
+    public void setVagas_carros(int vagas_carros) {
         this.vagas_carros = vagas_carros;
     }
 }
