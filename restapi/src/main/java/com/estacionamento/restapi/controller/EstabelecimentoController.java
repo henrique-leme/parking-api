@@ -4,13 +4,8 @@ package com.estacionamento.restapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import com.estacionamento.restapi.model.estabelecimento;
 import com.estacionamento.restapi.services.EstabelecimentoService;
@@ -23,24 +18,34 @@ public class EstabelecimentoController {
     @Autowired
     private EstabelecimentoService estabelecimentoService;
 
-    @GetMapping (value = "/")
+    //Lista todos os Estabelecimentos
+    @GetMapping
     public List<estabelecimento> findAll() {
         return estabelecimentoService.findAll();
     }
 
+    //Busca um Estabelecimento pelo id
     @GetMapping(path = "/{id}")
     public estabelecimento findById(@PathVariable Integer id) {
         return estabelecimentoService.findById(id);
     }
 
-    @PostMapping(path = "/create")
+    // Cria um novo Estabelecimento
+    @PostMapping
     public estabelecimento create(@RequestBody estabelecimento estabelecimento) { 
         return estabelecimentoService.create(estabelecimento);
     }
 
+    //Deleta um Estabelecimento
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Integer id) {
         estabelecimentoService.delete(id);
+    }
+
+    // Atualiza um Estabelecimento
+    @PutMapping(path = "/{id}")
+    public estabelecimento update(@RequestBody estabelecimento Estabelecimento, @PathVariable Integer id) {
+        return estabelecimentoService.update(Estabelecimento, id);
     }
 }
     
