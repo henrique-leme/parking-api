@@ -3,12 +3,10 @@ package com.estacionamento.restapi.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.estacionamento.restapi.model.estabelecimento;
+import com.estacionamento.restapi.model.Estabelecimento;
 import com.estacionamento.restapi.repository.EstabelecimentoRepository;
 
 
@@ -21,25 +19,24 @@ public class EstabelecimentoService {
 
     //Metodos Service
 
-    public List<estabelecimento> findAll() {
+    public List<Estabelecimento> findAll() {
         return estabelecimentoRepository.findAll();
     }
 
-    public Optional<estabelecimento> findById(Integer id) {
+    public Optional<Estabelecimento> findById(Integer id) {
         return estabelecimentoRepository.findById(id); 
     }
 
-    @Transactional
-    public estabelecimento create(estabelecimento estabelecimentoModel) {
+
+    public Estabelecimento create(Estabelecimento estabelecimentoModel) {
         return estabelecimentoRepository.save(estabelecimentoModel);
     }
 
-    @Transactional
-    public void delete(estabelecimento estabelecimento) {
+    public void delete(Estabelecimento estabelecimento) {
         estabelecimentoRepository.delete(estabelecimento);
     }
 
-    public estabelecimento update(estabelecimento estabelecimentoModel) {
+    public Estabelecimento update(Estabelecimento estabelecimentoModel) {
         return estabelecimentoRepository.save(estabelecimentoModel);
     }
 
