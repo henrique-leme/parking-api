@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.estacionamento.restapi.dtos.EstabelecimentoDTO;
-import com.estacionamento.restapi.model.estabelecimento;
+import com.estacionamento.restapi.model.Estabelecimento;
 import com.estacionamento.restapi.services.EstabelecimentoService;
 
 
@@ -26,14 +26,14 @@ public class EstabelecimentoController {
 
     //Lista todos os Estabelecimentos
     @GetMapping
-    public ResponseEntity<List<estabelecimento>> findAllEstabelecimento() {
+    public ResponseEntity<List<Estabelecimento>> findAllEstabelecimento() {
         return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findAll());
     }
 
     //Busca um Estabelecimento pelo id
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Object> findById(@PathVariable(value = "id") Integer id) {
-        Optional<estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
+    public ResponseEntity<Object> findEstabelecimentoById(@PathVariable(value = "id") Integer id) {
+        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
         if(!estabelecimentoExists.isPresent()){
            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado"); 
         }
@@ -43,16 +43,15 @@ public class EstabelecimentoController {
     // Cria um novo Estabelecimento
     @PostMapping
     public ResponseEntity<Object> createEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO) { 
-        var estabelecimentoModel = new estabelecimento();
+        var estabelecimentoModel = new Estabelecimento();
         BeanUtils.copyProperties(estabelecimentoDTO, estabelecimentoModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(estabelecimentoService.create(estabelecimentoModel));
-        
     }
 
     //Deleta um Estabelecimento
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Object> deleteEstabelecimento(@PathVariable(value = "id") Integer id) {
-        Optional<estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
+        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
         if(!estabelecimentoExists.isPresent()){
            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado"); 
         }
@@ -64,7 +63,7 @@ public class EstabelecimentoController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<Object> updateEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO, 
                                                         @PathVariable(value = "id") Integer id) {
-        Optional<estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
+        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
         if(!estabelecimentoExists.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado");
         }
