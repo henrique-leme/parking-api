@@ -2,9 +2,12 @@ package com.estacionamento.restapi.model;
 
 import javax.persistence.*;
 
+import lombok.Builder;
+
+@Builder
 @Entity
 @Table(name = "Estabelecimentos")
-public class estabelecimento {
+public class Estabelecimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -33,17 +36,30 @@ public class estabelecimento {
     @Column(nullable = false)
     private int numeroDeMotosEstacionados;
 
-    public estabelecimento() {
+    public Estabelecimento() {
     }
 
-    public estabelecimento(String nome,
-            String cnpj,
-            String endereco,
-            String telefone,
-            int vagasMotos, 
-            int vagasCarros, 
-            int numeroDeCarrosEstacionados, 
-            int numeroDeMotosEstacionados
+    public Estabelecimento(int id, String nome, String cnpj, String endereco, String telefone, int vagasMotos,
+                           int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados) {
+        this.id = id;
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.vagasMotos = vagasMotos;
+        this.vagasCarros = vagasCarros;
+        this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
+        this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
+    }
+
+    public Estabelecimento(String nome,
+                           String cnpj,
+                           String endereco,
+                           String telefone,
+                           int vagasMotos,
+                           int vagasCarros,
+                           int numeroDeCarrosEstacionados,
+                           int numeroDeMotosEstacionados
             ) {
         this.nome = nome;
         this.cnpj = cnpj;
