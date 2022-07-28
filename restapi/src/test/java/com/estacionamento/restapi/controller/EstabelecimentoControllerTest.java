@@ -41,6 +41,20 @@ public class EstabelecimentoControllerTest {
         when(estabelecimentoService.findAll()).thenReturn(List.of(VALID_ESTABELECIMENTO));
         when(estabelecimentoService.findById(ArgumentMatchers.anyInt())).thenReturn(Optional.of(VALID_ESTABELECIMENTO));
     }
+
+    @Test
+    void create_saveEstabelecimento_WhenSuccessful() {
+
+        ResponseEntity<Object> estabelecimentoEntity = estabelecimentoController.createEstabelecimento(EstabelecimentoDTOSetup.createValidEstabelecimento());
+        Estabelecimento body = (Estabelecimento) estabelecimentoEntity.getBody();
+
+        Assertions.assertThat(estabelecimentoEntity).isNotNull();
+        Assertions.assertThat(body).isNotNull();
+        Assertions.assertThat(estabelecimentoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.CREATED);
+
+        assertEstabelecimentoFields(body);
+    }
+
     private void assertEstabelecimentoFields(Estabelecimento estabelecimento) {
         Assertions.assertThat(estabelecimento.getNome()).isNotNull().isNotEmpty();
         Assertions.assertThat(estabelecimento.getCnpj()).isNotNull().isNotEmpty();
