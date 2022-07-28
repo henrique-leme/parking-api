@@ -66,6 +66,17 @@ public class EstabelecimentoControllerTest {
         Assertions.assertThat(estabelecimentosEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
     }
 
+    @Test
+    void listAll_returnEmptyListofEstabelecimentos_WhenSucessful() {
+        when(estabelecimentoService.findAll()).thenReturn(Collections.emptyList());
+        ResponseEntity<List<Estabelecimento>> estabelecimentosEntity = estabelecimentoController.findAllEstabelecimento();
+        List<Estabelecimento> body = estabelecimentosEntity.getBody();
+
+        Assertions.assertThat(estabelecimentosEntity).isNotNull();
+        Assertions.assertThat(body).isNotNull().isEmpty();
+        Assertions.assertThat(estabelecimentosEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+    }
+
     private void assertEstabelecimentoFields(Estabelecimento estabelecimento) {
         Assertions.assertThat(estabelecimento.getNome()).isNotNull().isNotEmpty();
         Assertions.assertThat(estabelecimento.getCnpj()).isNotNull().isNotEmpty();
