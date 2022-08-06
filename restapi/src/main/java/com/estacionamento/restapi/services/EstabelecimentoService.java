@@ -24,6 +24,7 @@ public class EstabelecimentoService {
     }
 
     public Optional<Estabelecimento> findById(Integer id) {
+
         return estabelecimentoRepository.findById(id); 
     }
 
