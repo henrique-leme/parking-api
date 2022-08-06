@@ -33,11 +33,7 @@ public class EstabelecimentoController {
     //Busca um Estabelecimento pelo id
     @GetMapping(path = "/{id}")
     public ResponseEntity<Object> findEstabelecimentoById(@PathVariable(value = "id") Integer id) {
-        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
-        if(!estabelecimentoExists.isPresent()){
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado"); 
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoExists.get());
+        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findById(id));
     }
 
     // Cria um novo Estabelecimento
