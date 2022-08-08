@@ -37,6 +37,12 @@ public class EstabelecimentoController {
         return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findById(id));
     }
 
+    //Busca um Estabeelcimento pelo CNPJ
+    @GetMapping(path = "/cnpj/{cnpj}")
+    public ResponseEntity<Object> findEstabelecimentoByCNPJ(@PathVariable(value = "cnpj")String cnpj)throws EstabelecimentoNotFoundException {
+        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findByCnpj(cnpj));
+    }
+
     // Cria um novo Estabelecimento
     @PostMapping
     public ResponseEntity<Object> createEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO) { 
