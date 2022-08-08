@@ -5,7 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.estacionamento.restapi.model.Estabelecimento;
 
+import java.util.Optional;
+
 @Repository
 public interface EstabelecimentoRepository extends JpaRepository<Estabelecimento, Integer>{
+    Optional<Estabelecimento> findByCnpj(String cnpj );
     
 }
