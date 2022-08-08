@@ -8,4 +8,7 @@ public class EstabelecimentoNotFoundException extends Exception{
     public EstabelecimentoNotFoundException(Integer id) {
         super(String.format("Estabelecimento com id %s não foi encontrado", id));
     }
+    public EstabelecimentoNotFoundException(String cnpj) {
+        super(String.format("Estabelecimento com CNPJ %s não foi encontrado", cnpj));
+    }
 }
