@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.validator.constraints.br.CNPJ;
+
 @Builder
 @Data
 public class EstabelecimentoDTO {
@@ -15,8 +17,7 @@ public class EstabelecimentoDTO {
     private String nome;
     
     @NotBlank
-    @Size(min = 14, max = 14)
-    @Pattern(regexp = "^[0-9]*")
+    @CNPJ
     private String cnpj;
 
     @NotBlank   
