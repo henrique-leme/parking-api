@@ -32,6 +32,11 @@ public class EstabelecimentoService {
         return foundEstabelecimento;
     }
 
+    public Estabelecimento findByCnpj(String cnpj) throws EstabelecimentoNotFoundException{
+        Estabelecimento foundEstabelecimento = estabelecimentoRepository.findByCnpj(cnpj)
+                .orElseThrow(() -> new EstabelecimentoNotFoundException(cnpj));
+        return foundEstabelecimento;
+    }
 
     public Estabelecimento create(Estabelecimento estabelecimentoModel) {
         return estabelecimentoRepository.save(estabelecimentoModel);
