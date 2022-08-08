@@ -3,7 +3,10 @@ package com.estacionamento.restapi.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.estacionamento.restapi.exception.EstabelecimentoNotFoundException;
+import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.estacionamento.restapi.model.Estabelecimento;
@@ -23,9 +26,10 @@ public class EstabelecimentoService {
         return estabelecimentoRepository.findAll();
     }
 
-    public Optional<Estabelecimento> findById(Integer id) {
-
-        return estabelecimentoRepository.findById(id); 
+    public Estabelecimento findById(Integer id) throws EstabelecimentoNotFoundException {
+        Estabelecimento foundEstabelecimento = estabelecimentoRepository.findById(id)
+                .orElseThrow(() -> new EstabelecimentoNotFoundException(id));
+        return foundEstabelecimento;
     }
 
 
@@ -33,13 +37,18 @@ public class EstabelecimentoService {
         return estabelecimentoRepository.save(estabelecimentoModel);
     }
 
-    public void delete(Estabelecimento estabelecimento) {
-        estabelecimentoRepository.delete(estabelecimento);
+    public void delete(Integer id) throws EstabelecimentoNotFoundException{
+       verifyExists(id);
+       estabelecimentoRepository.deleteById(id);
     }
 
-    public Estabelecimento update(Estabelecimento estabelecimentoModel) {
+    public Estabelecimento update(Estabelecimento estabelecimentoModel, Integer id) throws EstabelecimentoNotFoundException {
+        verifyExists(id);
         return estabelecimentoRepository.save(estabelecimentoModel);
     }
 
-       
+       private Estabelecimento verifyExists(Integer id) throws EstabelecimentoNotFoundException {
+        return estabelecimentoRepository.findById(id)
+                .orElseThrow(() -> new EstabelecimentoNotFoundException(id));
+       }
 }
