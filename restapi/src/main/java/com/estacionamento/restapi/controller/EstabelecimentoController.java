@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.estacionamento.restapi.exception.EstabelecimentoNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class EstabelecimentoController {
 
     //Busca um Estabelecimento pelo id
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Object> findEstabelecimentoById(@PathVariable(value = "id") Integer id) {
+    public ResponseEntity<Object> findEstabelecimentoById(@PathVariable(value = "id") Integer id) throws EstabelecimentoNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findById(id));
     }
 
@@ -46,28 +47,21 @@ public class EstabelecimentoController {
 
     //Deleta um Estabelecimento
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Object> deleteEstabelecimento(@PathVariable(value = "id") Integer id) {
-        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
-        if(!estabelecimentoExists.isPresent()){
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado"); 
-        }
-        estabelecimentoService.delete(estabelecimentoExists.get());
+    public ResponseEntity<Object> deleteEstabelecimento(@PathVariable(value = "id") Integer id) throws EstabelecimentoNotFoundException {
+        estabelecimentoService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Estabelecimento deletado com sucesso");
     }
 
     // Atualiza um Estabelecimento
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Object> updateEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO, 
-                                                        @PathVariable(value = "id") Integer id) {
-        Optional<Estabelecimento> estabelecimentoExists = estabelecimentoService.findById(id);
-        if(!estabelecimentoExists.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estabelecimento não encontrado");
-        }
-        // Recebe o estabelecimento existente
-        var estabelecimentoModel = estabelecimentoExists.get();
-        //Recebe os dados
-        BeanUtils.copyProperties(estabelecimentoDTO, estabelecimentoModel);       
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.update(estabelecimentoModel));                                                   
+    public ResponseEntity<Object> updateEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO,
+                                                        @PathVariable(value = "id") Integer id) throws EstabelecimentoNotFoundException{
+        //Recebe o estabelecimento
+       Estabelecimento estabelecimentoExists = estabelecimentoService.findById(id);
+
+       //Recebe os dados do estabelecimento
+        BeanUtils.copyProperties(estabelecimentoDTO, estabelecimentoExists);
+        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.update(estabelecimentoExists, id));
     }
 }
     
