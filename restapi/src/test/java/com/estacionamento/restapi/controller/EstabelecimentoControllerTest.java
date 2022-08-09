@@ -40,6 +40,8 @@ public class EstabelecimentoControllerTest {
         when(estabelecimentoService.create(ArgumentMatchers.any(EstabelecimentoDTO.class))).thenReturn(VALID_ESTABELECIMENTO);
         when(estabelecimentoService.findAll()).thenReturn(List.of(VALID_ESTABELECIMENTO));
         when(estabelecimentoService.findById(ArgumentMatchers.anyInt())).thenReturn(VALID_ESTABELECIMENTO);
+        when(estabelecimentoService.findByCnpj(ArgumentMatchers.anyString())).thenReturn(VALID_ESTABELECIMENTO);
+        when(estabelecimentoService.delete(ArgumentMatchers.anyInt())).thenReturn("Estabelecimento deletado");
     }
 
     @Test
@@ -93,7 +95,13 @@ public class EstabelecimentoControllerTest {
     }
 
     @Test
-    void findById_returnNotFoundEstabelecimento_WhenErrorIsReturned() {
+    void findByCnpj_returnEstabelecimento_WhenSucessful() throws NotFoundException {
+        ResponseEntity<Object> estabelecimentoEntity = estabelecimentoController.findEstabelecimentoByCNPJ(VALID_ESTABELECIMENTO.getCnpj());
+        Estabelecimento body = (Estabelecimento) estabelecimentoEntity.getBody();
+
+        Assertions.assertThat(estabelecimentoEntity).isNotNull();
+        Assertions.assertThat((body.getCnpj())).isNotNull().isEqualTo("38932768000176");
+        Assertions.assertThat(estabelecimentoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
 
     }
     @Test
