@@ -24,7 +24,7 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Object findById(Integer id)throws NotFoundException {
+    public Veiculo findById(Integer id)throws NotFoundException {
         Veiculo foundVeiculo = veiculoRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("O veiculo com %s não foi encontrado",id)));
         return foundVeiculo;
@@ -42,7 +42,16 @@ public class VeiculoService {
         BeanUtils.copyProperties(veiculoDTO, veiculoModel);
         return veiculoRepository.save(veiculoModel);
     }
+    public String delete(Integer id)throws NotFoundException {
+        verifyExists(id);
+        veiculoRepository.deleteById(id);
+        return "Estabelecimento deletado com sucesso";
+    }
 
+    public Veiculo update(Veiculo veiculoModel, Integer id) throws NotFoundException {
+        verifyExists(id);
+        return veiculoRepository.save(veiculoModel);
+    }
 
     private Veiculo verifyExists(Integer id) throws NotFoundException {
         return veiculoRepository.findById(id)
@@ -55,6 +64,7 @@ public class VeiculoService {
             throw new AlreadyExistException(String.format("Veiculo com a placa %s já foi registrado",placa));
         }
     }
+
 
 
 }
