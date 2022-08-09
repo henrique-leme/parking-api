@@ -1,29 +1,27 @@
 package com.estacionamento.restapi.dtos;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
-import lombok.Builder;
-import lombok.Data;
+
+import lombok.*;
+
 import org.hibernate.validator.constraints.br.CNPJ;
 
 @Builder
 @Data
 public class EstabelecimentoDTO {
    
-    @NotBlank   
+    @NotBlank(message = "O Campo nome não pode ser deixado em branco")
     private String nome;
     
-    @NotBlank
+    @NotBlank(message = "O campo CNPJ não pode ser deixado em branco")
     @CNPJ
     private String cnpj;
 
-    @NotBlank   
+    @NotBlank(message = "O campo endereço não pode ser deixado em branco")
     private String endereco;
 
-    @NotBlank
+    @NotBlank(message = "O campo telefone não pode ser deixado em branco")
     @Size(min = 11, max = 11)
     @Pattern(regexp = "^[0-9]*")
     private String telefone;
