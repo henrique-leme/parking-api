@@ -1,18 +1,19 @@
 package com.estacionamento.restapi.model;
 
 import javax.persistence.*;
-import java.util.List;
 
+import lombok.Builder;
+
+@Builder
 @Entity
-@Table(name = "veiculos")
-public class veiculo {
+@Table(name = "Veiculos")
+public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ElementCollection
-    @Column(nullable = false)
-    private List<String> marcas;
+    @Column(nullable = false, name = "marca")
+    private String marca;
 
     @Column(nullable = false, name = "modelo")
     private String modelo;
@@ -23,16 +24,23 @@ public class veiculo {
     @Column(nullable = false, name = "placa", unique = true)
     private String placa;
 
-    @ElementCollection
-    @Column(nullable = false)
-    private List<String> tipo;
+    @Column(nullable = false, name = "tipoVeiculo")
+    private TipoVeiculo tipo;
 
-    public veiculo() {
+    public Veiculo() {
     }
 
-    public veiculo(int id, List<String> marcas, String modelo, String cor, String placa, List<String> tipo) {
+    public Veiculo(int id, String marca, String modelo, String cor, String placa, TipoVeiculo tipo) {
         this.id = id;
-        this.marcas = marcas;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cor = cor;
+        this.placa = placa;
+        this.tipo = tipo;
+    }
+
+    public Veiculo(String marca, String modelo, String cor, String placa, TipoVeiculo tipo) {
+        this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.placa = placa;
@@ -47,12 +55,12 @@ public class veiculo {
         this.id = id;
     }
 
-    public List<String> getMarcas() {
-        return marcas;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setMarcas(List<String> marcas) {
-        this.marcas = marcas;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getModelo() {
@@ -79,11 +87,11 @@ public class veiculo {
         this.placa = placa;
     }
 
-    public List<String> getTipo() {
+    public TipoVeiculo getTipo() {
         return tipo;
     }
 
-    public void setTipo(List<String> tipo) {
+    public void setTipo(TipoVeiculo tipo) {
         this.tipo = tipo;
     }
 }
