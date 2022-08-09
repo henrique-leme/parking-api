@@ -13,10 +13,10 @@ public class EstabelecimentoDTOSetup {
     public static EstabelecimentoDTO.EstabelecimentoDTOBuilder defaultBuilder() {
         return EstabelecimentoDTO.builder()
         .nome("Estabelecimento Teste")
-        .cnpj("99999999999999")
-        .endereco("Rua de Teste")
-        .telefone("99999999999")
-        .vagasCarros(0)
-        .vagasMotos(0);
+        .cnpj("38932768000176")
+        .endereco("Rua de Teste, Bairro de Teste")
+        .telefone("12927837782")
+        .vagasCarros(40)
+        .vagasMotos(20);
     }
 }
