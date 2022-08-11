@@ -54,6 +54,16 @@ public class VeiculoControllerTest {
 
         assertVeiculoFields(body);
     }
+
+
+    @Test
+    void delete_returnDeletedVeiculo_WhenSucessful() {
+        ResponseEntity<String> veiculoEntity = veiculoController.deleteVeiculo(VALID_VEICULO.getId());
+
+        Assertions.assertThat(veiculoEntity).isNotNull();
+        Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+    }
+
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
         Assertions.assertThat(veiculo.getModelo()).isNotNull().isNotEmpty();
