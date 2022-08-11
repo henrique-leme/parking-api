@@ -95,6 +95,16 @@ public class VeiculoControllerTest {
         Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
     }
 
+    @Test
+    void findByPlaca_returnVeiculo_WhenSucessful() throws NotFoundException {
+        ResponseEntity<Object> veiculoEntity = veiculoController.findVeiculoByPlaca(VALID_VEICULO.getPlaca());
+        Veiculo body = (Veiculo) veiculoEntity.getBody();
+
+        Assertions.assertThat(veiculoEntity).isNotNull();
+        Assertions.assertThat((body.getPlaca())).isNotNull().isEqualTo("HTM5196"); //testando p da errado
+        Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+
+    }
     }
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
