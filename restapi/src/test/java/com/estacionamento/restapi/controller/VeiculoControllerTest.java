@@ -84,6 +84,18 @@ public class VeiculoControllerTest {
         Assertions.assertThat(body).isNotNull().isEmpty();
         Assertions.assertThat(veiculosEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
     }
+
+    @Test
+    void findById_returnVeiculo_WhenSucessful() throws NotFoundException {
+        ResponseEntity<Object> veiculoEntity = veiculoController.findVeiculoById(VALID_VEICULO.getId());
+        Veiculo body = (Veiculo) veiculoEntity.getBody();
+
+        Assertions.assertThat(veiculoEntity).isNotNull();
+        Assertions.assertThat(body.getId()).isNotNull().isEqualTo(1);
+        Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+    }
+
+    }
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
         Assertions.assertThat(veiculo.getModelo()).isNotNull().isNotEmpty();
