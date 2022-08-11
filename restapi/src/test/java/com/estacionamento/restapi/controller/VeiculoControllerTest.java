@@ -42,6 +42,18 @@ public class VeiculoControllerTest {
         when(veiculoService.delete(ArgumentMatchers.anyInt())).thenReturn("Veiculo deletado");
     }
 
+    @Test
+    void create_saveVeiculo_WhenSuccessful() {
+
+        ResponseEntity<Object> veiculoEntity = veiculoController.createVeiculo(VeiculoDTOSetup.createValidVeiculo());
+        Veiculo body = (Veiculo) veiculoEntity.getBody();
+
+        Assertions.assertThat(veiculoEntity).isNotNull();
+        Assertions.assertThat(body).isNotNull();
+        Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.CREATED);
+
+        assertVeiculoFields(body);
+    }
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
         Assertions.assertThat(veiculo.getModelo()).isNotNull().isNotEmpty();
