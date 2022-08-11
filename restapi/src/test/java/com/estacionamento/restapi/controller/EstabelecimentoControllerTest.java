@@ -1,6 +1,5 @@
 package com.estacionamento.restapi.controller;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.estacionamento.restapi.dtos.EstabelecimentoDTO;
@@ -59,8 +58,11 @@ public class EstabelecimentoControllerTest {
 
 
     @Test
-    void testDeleteEstabelecimento() {
+    void delete_returnDeletedEstabelecimento_WhenSucessful() {
+        ResponseEntity<String> estabelecimentoEntity = estabelecimentoController.deleteEstabelecimento(VALID_ESTABELECIMENTO.getId());
 
+        Assertions.assertThat(estabelecimentoEntity).isNotNull();
+        Assertions.assertThat(estabelecimentoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
     }
 
     @Test
