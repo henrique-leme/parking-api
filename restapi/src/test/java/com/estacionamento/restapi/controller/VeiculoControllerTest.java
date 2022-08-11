@@ -64,6 +64,26 @@ public class VeiculoControllerTest {
         Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
     }
 
+    @Test
+    void listAll_returnListofVeiculos_WhenSucessful() {
+        ResponseEntity<List<Veiculo>> veiculoEntity = veiculoController.findAllVeiculos();
+        List<Veiculo> body = veiculoEntity.getBody();
+
+        Assertions.assertThat(veiculoEntity).isNotNull();
+        Assertions.assertThat(body).isNotNull().isNotEmpty().hasSize(1).contains(VALID_VEICULO);
+        Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    void listAll_returnEmptyListofVeiculos_WhenSucessful() {
+        when(veiculoService.findAll()).thenReturn(Collections.emptyList());
+        ResponseEntity<List<Veiculo>> veiculosEntity = veiculoController.findAllVeiculos();
+        List<Veiculo> body = veiculosEntity.getBody();
+
+        Assertions.assertThat(veiculosEntity).isNotNull();
+        Assertions.assertThat(body).isNotNull().isEmpty();
+        Assertions.assertThat(veiculosEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
+    }
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
         Assertions.assertThat(veiculo.getModelo()).isNotNull().isNotEmpty();
