@@ -9,8 +9,9 @@ public class EstabelecimentoSetup {
 
     public static Estabelecimento updateValidEstabelecimento() {
         return defaultBuilder().id(1)
-        .nome("Estabelecimento de Teste Errado")
-                .cnpj("389.32.768.000.176")
+        .nome("Estabelecimento de Teste Novo")
+                .cnpj("38932768000176")
+
         .build();
     }
 
