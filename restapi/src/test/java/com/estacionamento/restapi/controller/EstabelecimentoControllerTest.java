@@ -107,7 +107,8 @@ public class EstabelecimentoControllerTest {
 
     }
     @Test
-    void testUpdateEstabelecimento() {
+    void update_UpdateEstabelecimento_whenSucessful (){
+
 
     }
     private void assertEstabelecimentoFields(Estabelecimento estabelecimento) {
@@ -115,5 +116,7 @@ public class EstabelecimentoControllerTest {
         Assertions.assertThat(estabelecimento.getCnpj()).isNotNull().isNotEmpty();
         Assertions.assertThat(estabelecimento.getEndereco()).isNotNull().isNotEmpty();
         Assertions.assertThat(estabelecimento.getTelefone()).isNotNull().isNotEmpty();
+        Assertions.assertThat(estabelecimento.getVagasCarros()).isNotNull();
+        Assertions.assertThat(estabelecimento.getVagasMotos()).isNotNull();
     }
 }
