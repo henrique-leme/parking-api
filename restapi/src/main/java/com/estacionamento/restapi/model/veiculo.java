@@ -27,24 +27,30 @@ public class Veiculo {
     @Column(nullable = false, name = "tipoVeiculo")
     private TipoVeiculo tipo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estabelecimento_cnpj")
+    private Estabelecimento estabelecimento;
+
     public Veiculo() {
     }
 
-    public Veiculo(int id, String marca, String modelo, String cor, String placa, TipoVeiculo tipo) {
+    public Veiculo(int id, String marca, String modelo, String cor, String placa, TipoVeiculo tipo, Estabelecimento estabelecimento) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.placa = placa;
         this.tipo = tipo;
+        this.estabelecimento = estabelecimento;
     }
 
-    public Veiculo(String marca, String modelo, String cor, String placa, TipoVeiculo tipo) {
+    public Veiculo(String marca, String modelo, String cor, String placa, TipoVeiculo tipo, Estabelecimento estabelecimento) {
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.placa = placa;
         this.tipo = tipo;
+        this.estabelecimento = estabelecimento;
     }
 
     public int getId() {
@@ -93,5 +99,13 @@ public class Veiculo {
 
     public void setTipo(TipoVeiculo tipo) {
         this.tipo = tipo;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
 }

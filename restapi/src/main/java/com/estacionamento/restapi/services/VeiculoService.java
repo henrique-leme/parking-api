@@ -45,7 +45,7 @@ public class VeiculoService {
     public String delete(Integer id)throws NotFoundException {
         verifyExists(id);
         veiculoRepository.deleteById(id);
-        return "Estabelecimento deletado com sucesso";
+        return "Veiculo deletado com sucesso";
     }
 
     public Veiculo update(Veiculo veiculoModel, Integer id) throws NotFoundException {

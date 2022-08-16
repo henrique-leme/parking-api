@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import lombok.Builder;
 
+import java.util.List;
+
 @Builder
 @Entity
 @Table(name = "Estabelecimentos")
@@ -36,11 +38,20 @@ public class Estabelecimento {
     @Column(nullable = false)
     private int numeroDeMotosEstacionados;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "veiculos",
+            joinColumns = {@JoinColumn(name = "estabelecimento_cnpj",
+                    referencedColumnName = "cnpj")},
+            inverseJoinColumns = {@JoinColumn(name = "veiculo_id",
+                    referencedColumnName = "id")}
+    )
+    private List<Veiculo> veiculosEstacionados;
+
+
     public Estabelecimento() {
     }
 
-    public Estabelecimento(int id, String nome, String cnpj, String endereco, String telefone, int vagasMotos,
-                           int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados) {
+    public Estabelecimento(int id, String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculosEstacionados) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -50,17 +61,10 @@ public class Estabelecimento {
         this.vagasCarros = vagasCarros;
         this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
         this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
+        this.veiculosEstacionados = veiculosEstacionados;
     }
 
-    public Estabelecimento(String nome,
-                           String cnpj,
-                           String endereco,
-                           String telefone,
-                           int vagasMotos,
-                           int vagasCarros,
-                           int numeroDeCarrosEstacionados,
-                           int numeroDeMotosEstacionados
-            ) {
+    public Estabelecimento(String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculosEstacionados) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
@@ -69,6 +73,7 @@ public class Estabelecimento {
         this.vagasCarros = vagasCarros;
         this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
         this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
+        this.veiculosEstacionados = veiculosEstacionados;
     }
 
     public int getNumeroDeCarrosEstacionados() {
@@ -141,5 +146,13 @@ public class Estabelecimento {
 
     public void setVagasCarros(int vagasCarros) {
         this.vagasCarros = vagasCarros;
+    }
+
+    public List<Veiculo> getVeiculosEstacionados() {
+        return veiculosEstacionados;
+    }
+
+    public void setVeiculosEstacionados(List<Veiculo> veiculosEstacionados) {
+        this.veiculosEstacionados = veiculosEstacionados;
     }
 }
