@@ -1,11 +1,3 @@
-### FCamara 🚀
-*"Queremos ser como uma árvore, 
-  crescer um pouco todos os dias e tentar tocar o céu, 
-  sem perder a solidez de nossas raízes."*
-Conheça: www.fcamara.com.br
-
-## Teste para vaga de Desenvolvedor Back-end
-Criar uma API REST para gerenciar um estacionamento de carros e motos.
 
 ## Cadastro de estabelecimento
 
