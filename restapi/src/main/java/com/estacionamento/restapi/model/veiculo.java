@@ -6,7 +6,7 @@ import lombok.Builder;
 
 @Builder
 @Entity
-@Table(name = "Veiculos")
+@Table(name = "veiculo")
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Veiculo {
     private TipoVeiculo tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "estabelecimento_cnpj")
+    @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 
     public Veiculo() {
