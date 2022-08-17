@@ -30,7 +30,7 @@ public class ParkinService {
            case CARRO:
                if (estabelecimento.getVagasCarros() == estabelecimento.getNumeroDeCarrosEstacionados())
                    throw new AlreadyFullException(String.format("As vagas do estabelecimento com CNPJ %s já foram preenchidas", estabelecimento.getCnpj()));
-               estabelecimento.setNumeroDeCarrosEstacionados(estabelecimento.getNumeroDeMotosEstacionados() + 1);
+               estabelecimento.setNumeroDeCarrosEstacionados(estabelecimento.getNumeroDeCarrosEstacionados() + 1);
 
            case MOTO:
                if (estabelecimento.getVagasMotos() == estabelecimento.getNumeroDeMotosEstacionados())
@@ -38,9 +38,12 @@ public class ParkinService {
                estabelecimento.setNumeroDeMotosEstacionados(estabelecimento.getNumeroDeMotosEstacionados() + 1);
        }
        estabelecimento.getVeiculos().add(veiculo);
+       veiculo.setEstabelecimento(estabelecimento);
+
+       veiculoRepository.save(veiculo);
        estabelecimentoRepository.save(estabelecimento);
 
-       return String.format("O Veiculo foi adicionado ao estabelecimento com CNPJ de %s e nome $d", estabelecimento.getCnpj(),estabelecimento.getNome());
+       return String.format("O Veiculo foi adicionado ao estabelecimento com CNPJ de %s e nome %s", estabelecimento.getCnpj(),estabelecimento.getNome());
    }
 
     public String saida(Integer veiculoId, Integer estabelecimentoId) {
@@ -56,9 +59,12 @@ public class ParkinService {
                 estabelecimento.setNumeroDeMotosEstacionados(estabelecimento.getNumeroDeMotosEstacionados() - 1);
         }
         estabelecimento.getVeiculos().remove(veiculo);
+        veiculo.setEstabelecimento(null);
+
+        veiculoRepository.save(veiculo);
         estabelecimentoRepository.save(estabelecimento);
 
-        return String.format("O Veiculo foi adicionado ao estabelecimento com CNPJ de %s e nome $d", estabelecimento.getCnpj(),estabelecimento.getNome());
+        return String.format("O Veiculo saiu do estabelecimento com CNPJ de %s e nome %s", estabelecimento.getCnpj(),estabelecimento.getNome());
     }
 
 //    private Veiculo verifyVeiculoExists(Integer id) throws NotFoundException {
