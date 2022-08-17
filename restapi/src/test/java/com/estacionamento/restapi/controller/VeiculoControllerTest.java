@@ -105,7 +105,7 @@ public class VeiculoControllerTest {
         Assertions.assertThat(veiculoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
 
     }
-    }
+
     private void assertVeiculoFields(Veiculo veiculo) {
         Assertions.assertThat(veiculo.getMarca()).isNotNull().isNotEmpty();
         Assertions.assertThat(veiculo.getModelo()).isNotNull().isNotEmpty();
