@@ -8,7 +8,7 @@ import java.util.List;
 
 @Builder
 @Entity
-@Table(name = "Estabelecimentos")
+@Table(name = "estabelecimento")
 public class Estabelecimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,18 +40,15 @@ public class Estabelecimento {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "veiculos",
-            joinColumns = {@JoinColumn(name = "estabelecimento_cnpj",
-                    referencedColumnName = "cnpj")},
-            inverseJoinColumns = {@JoinColumn(name = "veiculo_id",
-                    referencedColumnName = "id")}
-    )
-    private List<Veiculo> veiculosEstacionados;
+            joinColumns = {@JoinColumn(name = "estabelecimento_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "veiculo_id", referencedColumnName = "id")})
+    private List<Veiculo> veiculos;
 
 
     public Estabelecimento() {
     }
 
-    public Estabelecimento(int id, String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculosEstacionados) {
+    public Estabelecimento(int id, String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculos) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -61,10 +58,10 @@ public class Estabelecimento {
         this.vagasCarros = vagasCarros;
         this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
         this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
-        this.veiculosEstacionados = veiculosEstacionados;
+        this.veiculos = veiculos;
     }
 
-    public Estabelecimento(String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculosEstacionados) {
+    public Estabelecimento(String nome, String cnpj, String endereco, String telefone, int vagasMotos, int vagasCarros, int numeroDeCarrosEstacionados, int numeroDeMotosEstacionados, List<Veiculo> veiculos) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.endereco = endereco;
@@ -73,7 +70,7 @@ public class Estabelecimento {
         this.vagasCarros = vagasCarros;
         this.numeroDeCarrosEstacionados = numeroDeCarrosEstacionados;
         this.numeroDeMotosEstacionados = numeroDeMotosEstacionados;
-        this.veiculosEstacionados = veiculosEstacionados;
+        this.veiculos = veiculos;
     }
 
     public int getNumeroDeCarrosEstacionados() {
@@ -148,11 +145,11 @@ public class Estabelecimento {
         this.vagasCarros = vagasCarros;
     }
 
-    public List<Veiculo> getVeiculosEstacionados() {
-        return veiculosEstacionados;
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
     }
 
-    public void setVeiculosEstacionados(List<Veiculo> veiculosEstacionados) {
-        this.veiculosEstacionados = veiculosEstacionados;
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 }
