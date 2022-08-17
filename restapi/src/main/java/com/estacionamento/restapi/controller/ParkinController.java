@@ -21,4 +21,10 @@ public class ParkinController {
                                                    @PathVariable Integer veiculo) {
         return ResponseEntity.status(HttpStatus.OK).body(parkinService.entrada(estabelecimento, veiculo));
     }
+
+    @PostMapping(path = "/{estabelecimento}/saida/{veiculo}")
+    public ResponseEntity<String> saidaDeVeiculo(@PathVariable Integer estabelecimento,
+                                                   @PathVariable Integer veiculo) {
+        return ResponseEntity.status(HttpStatus.OK).body(parkinService.saida(estabelecimento, veiculo));
+    }
 }
