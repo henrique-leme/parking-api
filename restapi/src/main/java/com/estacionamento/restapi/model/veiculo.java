@@ -2,6 +2,7 @@ package com.estacionamento.restapi.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 
 @Builder
@@ -10,7 +11,7 @@ import lombok.Builder;
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(nullable = false, name = "marca")
     private String marca;
@@ -29,12 +30,13 @@ public class Veiculo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estabelecimento_id")
+    @JsonIgnore
     private Estabelecimento estabelecimento;
 
     public Veiculo() {
     }
 
-    public Veiculo(int id, String marca, String modelo, String cor, String placa, TipoVeiculo tipo, Estabelecimento estabelecimento) {
+    public Veiculo(Integer id, String marca, String modelo, String cor, String placa, TipoVeiculo tipo, Estabelecimento estabelecimento) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -53,11 +55,11 @@ public class Veiculo {
         this.estabelecimento = estabelecimento;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
