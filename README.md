@@ -1,29 +1,25 @@
-# Título do projeto
-
-Insira aqui as tecnologias utilizadas no projeto <br>
+# API de Estacionamento
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&style=for-the-badge&logo=REACT"/>
-  <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
-  <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/>
-  <img src="http://img.shields.io/static/v1?label=Ruby&message=2.6.3&color=red&style=for-the-badge&logo=ruby"/>
-  <img src="http://img.shields.io/static/v1?label=Ruby%20On%20Rails%20&message=6.0.2.2&color=red&style=for-the-badge&logo=ruby"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
   <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
    <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
-   <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/>
+   
 </p>
 
-- Status do Projeto: ✔️ ⚠️ (concluido, em desenvolvimento, em manutencao, etc)
+- Status do Projeto: 🔧 Em Desenvolvimento
 
 Um parágrafo da descrição do projeto vai aqui
 
 ### ⚙️ Funcionalidades
 
-Coloque aqui as funcionalidades do projeto
+A API de Estacionamento possuí as seguintes funcinalidades:
 
-- Funcionalidade 1
-- Funcionalidade 2
-- Funcionalidade 3
+- Cadastro de estabelecimentos.
+- Cadastro de veículos.
+- Controle de entrada e saída de veículos.
 
 ### 📚 Documentação
 
@@ -35,44 +31,53 @@ Coloque aqui exemplos
 
 ### 📝Topicos
 
-- [Começando](##começando)
+- [Começando](#-começando)
 
-- [Como rodar](#como-rodar)
+- [Como rodar](#%EF%B8%8F-como-rodar)
 
-- [Desenvolvimento](#desenvolvimento)
+- [Desenvolvimento](#-desenvolvimento)
 
-- [Autores](#autores)
+- [Autores](#%EF%B8%8F-autores)
 
 ## 🚀 Começando
 
-Coloque aqui uma breve descricao de como copiar o projeto, essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
-
-Consulte **Implantação** para saber como implantar o projeto.
+Primeiramente é preciso clonar o projeto na sua máquina, para isso, abra o git em algum terminal e rode o seguinte comando:
+```
+$ git clone https://github.com/henrique-leme/backend-test-java.git
+```
 
 ### 📋 Pré-requisitos
 
-Coloque aqui o que você precisa para instalar o projeto e como instalá-lo?
-
-```
-Coloque aqui exemplos
-```
+Para rodar e instalar o projeto é preciso ter instalado
+- Java 8
+- Postgres
+- Insomnia ou Postman
+- Git 
+- IDE de sua escolha ( recomendo Intellij ou VS Code )
 
 ### 🔧 Instalação
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+Tendo os requisitos acima você ira abrir o projeto na sua IDE.
 
-Diga como essa etapa será:
+- No caso do VS Code, é recomendado que você tenha o ambiente Java configurado, recomendo seguir os passos no vídeo do link abaixo até os 5:20 minutos de vídeo, após isso podera abrir o projeto no VS Code normalmente
 
-```
-Coloque aqui exemplos
-```
+(https://www.youtube.com/watch?v=K2OD-3NBE6s&ab_channel=HélioKamakawa) 
+
+- Para abrir o projeto no Intellij, 
 
 ### 🔌Iniciando/Configurando banco de dados
 
-Coloque aqui um passo-a-passo de como iniciar e rodar o banco de dados
+Para rodar o projeto propriamente, é preciso configurar o banco de dados de acordo com o seu ambiente, para isso vá até o arquivo **application.properties** e altere as seguintes linhas:
 
 ```
-Coloque aqui exemplos
+# Aqui você ira criar um banco de dados postgre com o nome (api_estacionamento)
+spring.datasource.url=jdbc:postgresql://localhost:5432/api_estacionamento
+
+# coloque nesta linha seu usuario do banco de dados no local de (seu_nome_de_usuario) ou utilize um com o nome padrão do projeto (postgres)
+spring.datasource.username=seu_nome_de_usuario
+
+# coloque nesta linha a sua senha do banco de dados ou utilize a padrão do projeto (postgres)
+spring.datasource.password=sua_senha 
 ```
 
 ## ⚙️ Como rodar
@@ -103,11 +108,12 @@ Adicione aqui notas sobre como implantar o software em um sistema ativo
 
 ### 🛠️ Construído com
 
-Mencione as ferramentas utilizadas para a criaçao seu projeto
+Para o desenvolvimento deste projeto, foram utilizadas as seguintes ferramentas
 
-- [Intellij IDEA](hhttps://www.jetbrains.com/pt-br/idea/) - O ambiente de desenvolvimento
+- [Intellij IDEA](https://www.jetbrains.com/pt-br/idea/) - O ambiente de desenvolvimento
 - [Maven](https://maven.apache.org/) - Gerente de Dependência
 - [Spring Boot](https://spring.io/projects/spring-boot) - Framework utilizado
+- [PostgreSQL](https://www.postgresql.org) - Banco de dados utilizado
 
 ### 📌 Versão
 
@@ -115,24 +121,7 @@ Coloque aqui uma breve explicaçao das versoes do projeto e de como elas são la
 
 ## ✒️ Autores
 
-Mencione aqui todos aqueles que ajudaram a desenvolver o projeto seja desde o início ou uma pequena ajuda
+Abaixo os autores do projeto, Henrique que desenvolveu e Rodrigo que instruiu  ao desenvolvimento dando feedbacks para melhorias do mesmo.
+- **Henrique Leme de Brito** - _Desenvolvedor_ - [Git-Hub](https://github.com/henrique-leme)
+- **Rodrigo Rodrigues** - _Project Leader_ 
 
-- **Contribuidor 1** - _Desenvolvedor_ - [Git-Hub](https://github.com/linkParaPerfil)
-- **Contribuidor 2** - _Project Leader_ - [Linkedin](https://github.com/linkParaPerfil)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
-## 📄 Licença
-
-Coloque aqui a liçensa utilizada nesse projeto.
-
-**Ex**:
-Este projeto está sob a licença (_licença aqui_) - veja o arquivo [License.md](https://github.com/usuario/projeto/licenca) para mais detalhes.
-
-## ✨Agradecimentos finais
-
-Coloque aqui mençoes e agradecimentos finais ou oque voçe preferir
-
-- Conte a outras pessoas sobre este projeto 📢
-- Obrigado publicamente.
-- etc.
