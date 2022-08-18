@@ -63,7 +63,13 @@ Tendo os requisitos acima você ira abrir o projeto na sua IDE.
 
 (https://www.youtube.com/watch?v=K2OD-3NBE6s&ab_channel=HélioKamakawa) 
 
-- Para abrir o projeto no Intellij, 
+- Para abrir o projeto no Intellij, ele ira automaticamente detectar que é um projeto Maven e ira configurar as dependencias, caso tenha algum problema e dificuldade, consulte o link abaixo
+
+(https://www.jetbrains.com/help/idea/import-project-or-module-wizard.html#export-project)
+(https://www.jetbrains.com/idea/guide/tutorials/working-with-maven/importing-a-project/)
+
+
+
 
 ### 🔌Iniciando/Configurando banco de dados
 
@@ -82,17 +88,18 @@ spring.datasource.password=sua_senha
 
 ## ⚙️ Como rodar
 
-Explique aqui como rodar a aplicaçao, coloque tambem um passo a passo para facilitar o entendimento e para que tudo ocorra bem.
+Após configurar e iniciar seu banco de dados, navegue até o arquivo **RestapiApplication** para rodar o projeto
 
 ```
-Coloque aqui exemplos
+restapi/src/main/java/com/estacionamento/restapi/RestapiApplication.java
 ```
 
-**PS: clone o próprio projeto e verfique se o passo a passo funciona**
+### 🛠 Como testar os end-points
 
-### 🛠 Como rodar os testes
+Para rodar os endpoints e testar as rotas, você pode importar as configurações no diretório do repositório e testar as requisições no Insominia ou no Postman ( recomendado o Insomnia )
 
-Explique como executar os testes automatizados para este sistema.
+- [Json Model]()
+- [Har Model]()
 
 ### 🔩 Analise os testes de ponta a ponta
 
