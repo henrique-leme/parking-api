@@ -8,10 +8,12 @@
    <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
    
 </p>
+<br>
 
+
+Está API foi desenvolvida para testar os meus conhecimentos sobre back-end e me auxiliar a praticar durante os meus estudos em Java e Spring-Boot, com certeza ela não está perfeita mas estou em constante evolução e desenvolvimento, aceito dicas e melhorias para o código ou formas diferentes que eu poderia ter desenvolvido ele.<br>
+O propósito desta API é realizar o controle de um estacionamento, possuindo as funcionalidades citadas abaixo.<br>
 - Status do Projeto: 🔧 Em Desenvolvimento
-
-Um parágrafo da descrição do projeto vai aqui
 
 ### ⚙️ Funcionalidades
 
@@ -23,11 +25,9 @@ A API de Estacionamento possuí as seguintes funcinalidades:
 
 ### 📚 Documentação
 
-Coloque aqui o link de acesso a documentação do projeto junto ao link de redirecionamento dela, caso não tenha um link on live, explique como acessala após fazer uma copia do projeto, com passo a passo
-
-```
-Coloque aqui exemplos
-```
+Está API possuí uma documentação com suas rotas, pórem para acessala é preciso inicializar a aplicação pois ainda não possuí um link on-live.<br>
+Após iniciar a aplicação basta acessar o seguinte link para visualizar a documentação:<br>
+[Swagger Docs](http://localhost:8080/swagger-ui.html) - **http://localhost:8080/swagger-ui.html**
 
 ### 📝Topicos
 
@@ -101,17 +101,10 @@ Para rodar os endpoints e testar as rotas, você pode importar as configuraçõe
 - [Json Model]()
 - [Har Model]()
 
-### 🔩 Analise os testes de ponta a ponta
-
-Explique como esses testes funcionam e porquê eles existem.
-
-```
-Coloque aqui exemplos
-```
 
 ## 📦 Desenvolvimento
 
-Adicione aqui notas sobre como implantar o software em um sistema ativo
+Para implementar está API em um sistema ativo, basca conectala a um banco de dados e utilizar os end-points da API
 
 ### 🛠️ Construído com
 
@@ -123,8 +116,7 @@ Para o desenvolvimento deste projeto, foram utilizadas as seguintes ferramentas
 - [PostgreSQL](https://www.postgresql.org) - Banco de dados utilizado
 
 ### 📌 Versão
-
-Coloque aqui uma breve explicaçao das versoes do projeto e de como elas são lançadas/funcionam
+Este projeto está em sua primeira versão e está em constante desenvolvimento, caso ache algum Bug, relate ao Desenvolvedor do projeto
 
 ## ✒️ Autores
 
