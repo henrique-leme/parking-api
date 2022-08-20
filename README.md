@@ -9,13 +9,12 @@
    
 </p>
 <br>
-
-
 Está API foi desenvolvida para testar os meus conhecimentos sobre back-end e me auxiliar a praticar durante os meus estudos em Java e Spring-Boot, com certeza ela não está perfeita mas estou em constante evolução e desenvolvimento, aceito dicas e melhorias para o código ou formas diferentes que eu poderia ter desenvolvido ele.<br>
 O propósito desta API é realizar o controle de um estacionamento, possuindo as funcionalidades citadas abaixo.<br>
 - Status do Projeto: 🔧 Em Desenvolvimento
 
 ### ⚙️ Funcionalidades
+
 
 A API de Estacionamento possuí as seguintes funcinalidades:
 
@@ -30,6 +29,7 @@ Após iniciar a aplicação basta acessar o seguinte link para visualizar a docu
 [Swagger Docs](http://localhost:8080/swagger-ui.html) - **http://localhost:8080/swagger-ui.html**
 
 ### 📝Topicos
+
 
 - [Começando](#-começando)
 
