@@ -56,8 +56,11 @@ public class EstabelecimentoController {
     //Busca um Estabeelcimento pelo CNPJ
     @GetMapping(path = "/cnpj/{cnpj}")
     @ApiOperation(value = "Essa rota é responsavel por buscar um Estabelecimento por CNPJ ")
-    public ResponseEntity<Object> findEstabelecimentoByCNPJ(@PathVariable(value = "cnpj")String cnpj)throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findByCnpj(cnpj));
+    public ResponseEntity<EstabelecimentoDTO> findEstabelecimentoByCNPJ(@PathVariable(value = "cnpj")String cnpj){
+        var estabelecimento = estabelecimentoService.findByCnpj(cnpj);
+        var body = modelMapper.map(estabelecimento, EstabelecimentoDTO.class);
+
+        return ResponseEntity.ok(body);
     }
 
     // Cria um novo Estabelecimento
