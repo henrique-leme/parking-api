@@ -32,8 +32,15 @@ public class EstabelecimentoController {
     //Lista todos os Estabelecimentos
     @GetMapping
     @ApiOperation(value = "Essa rota é responsavel por Listar todos os Estabelecimentos")
-    public ResponseEntity<List<Estabelecimento>> findAllEstabelecimento() {
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findAll());
+    public ResponseEntity<List<EstabelecimentoDTO>> findAllEstabelecimento() {
+        List<EstabelecimentoDTO> body
+                = estabelecimentoService
+                .findAll()
+                .stream()
+                .map(entity -> modelMapper.map(entity, EstabelecimentoDTO.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(body);
     }
 
     //Busca um Estabelecimento pelo id
