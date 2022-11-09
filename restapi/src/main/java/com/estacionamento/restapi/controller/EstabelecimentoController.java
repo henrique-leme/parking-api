@@ -82,14 +82,12 @@ public class EstabelecimentoController {
     // Atualiza um Estabelecimento
     @PutMapping(path = "/{id}")
     @ApiOperation(value = "Essa rota é responsavel por atualizar um Estabelecimento")
-    public ResponseEntity<Object> updateEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO,
-                                                        @PathVariable(value = "id") Integer id) throws NotFoundException {
-        //Recebe o estabelecimento
-       Estabelecimento estabelecimentoExists = estabelecimentoService.findById(id);
+    public ResponseEntity<EstabelecimentoDTO> updateEstabelecimento(@RequestBody @Valid EstabelecimentoDTO dto,
+                                                                    @PathVariable(value = "id") Integer id)  {
+        dto.setId(id);
 
-       //Recebe os dados do estabelecimento
-        BeanUtils.copyProperties(estabelecimentoDTO, estabelecimentoExists);
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.update(estabelecimentoExists, id));
+        var estabelecimento = estabelecimentoService.update(modelMapper.map(dto, Estabelecimento.class));
+        return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(estabelecimento, EstabelecimentoDTO.class));
     }
 }
     
