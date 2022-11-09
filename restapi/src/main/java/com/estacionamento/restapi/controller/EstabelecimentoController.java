@@ -1,23 +1,20 @@
 package com.estacionamento.restapi.controller;
 
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import com.estacionamento.restapi.exception.AlreadyExistException;
-import com.estacionamento.restapi.exception.NotFoundException;
+import com.estacionamento.restapi.dtos.EstabelecimentoDTO;
+import com.estacionamento.restapi.model.Estabelecimento;
+import com.estacionamento.restapi.services.EstabelecimentoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.estacionamento.restapi.dtos.EstabelecimentoDTO;
-import com.estacionamento.restapi.model.Estabelecimento;
-import com.estacionamento.restapi.services.EstabelecimentoService;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -95,6 +92,7 @@ public class EstabelecimentoController {
         return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(estabelecimento, EstabelecimentoDTO.class));
     }
 }
-    
+
+
 
 
