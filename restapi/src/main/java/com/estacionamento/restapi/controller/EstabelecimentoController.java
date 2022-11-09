@@ -29,6 +29,9 @@ public class EstabelecimentoController {
     @Autowired
     private EstabelecimentoService estabelecimentoService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     //Lista todos os Estabelecimentos
     @GetMapping
     @ApiOperation(value = "Essa rota é responsavel por Listar todos os Estabelecimentos")
