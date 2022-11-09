@@ -46,8 +46,11 @@ public class EstabelecimentoController {
     //Busca um Estabelecimento pelo id
     @GetMapping(path = "/{id}")
     @ApiOperation(value = "Essa rota é responsavel por buscar um Estabelecimento pelo id")
-    public ResponseEntity<Object> findEstabelecimentoById(@PathVariable(value = "id") Integer id) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.findById(id));
+    public ResponseEntity<EstabelecimentoDTO> findEstabelecimentoById(@PathVariable(value = "id") Integer id) {
+        var estabelecimento = estabelecimentoService.findById(id);
+        var body = modelMapper.map(estabelecimento, EstabelecimentoDTO.class);
+
+        return ResponseEntity.ok(body);
     }
 
     //Busca um Estabeelcimento pelo CNPJ
