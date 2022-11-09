@@ -73,8 +73,10 @@ public class EstabelecimentoController {
     //Deleta um Estabelecimento
     @DeleteMapping(path = "/{id}")
     @ApiOperation(value = "Essa rota é responsavel por deletar um Estabelecimento")
-    public ResponseEntity<String> deleteEstabelecimento(@PathVariable(value = "id") Integer id) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.OK).body(estabelecimentoService.delete(id));
+    public ResponseEntity<EstabelecimentoDTO> deleteEstabelecimento(@PathVariable(value = "id") Integer id) {
+        estabelecimentoService.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 
     // Atualiza um Estabelecimento
