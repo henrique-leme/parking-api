@@ -69,8 +69,10 @@ public class EstabelecimentoController {
     // Cria um novo Estabelecimento
     @PostMapping
     @ApiOperation(value = "Essa rota é responsavel por criar um Estabelecimento")
-    public ResponseEntity<Object> createEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(estabelecimentoService.create(estabelecimentoDTO));
+    public ResponseEntity<EstabelecimentoDTO> createEstabelecimento(@RequestBody @Valid EstabelecimentoDTO estabelecimentoDTO) {
+        var estabelecimento = estabelecimentoService.create(modelMapper.map(estabelecimentoDTO, Estabelecimento.class));
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(estabelecimento, EstabelecimentoDTO.class));
     }
 
     //Deleta um Estabelecimento
