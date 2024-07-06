@@ -1,126 +1,123 @@
-# API de Estacionamento
+# Parking API
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
-  <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
-   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
-   
+  <img src="http://img.shields.io/static/v1?label=TESTS&message=%3E100&color=GREEN&style=for-the-badge"/>
+  <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20DEVELOPMENT&color=RED&style=for-the-badge"/>
 </p>
-<br>
-Está API foi desenvolvida para testar os meus conhecimentos sobre back-end e me auxiliar a praticar durante os meus estudos em Java e Spring-Boot, com certeza ela não está perfeita mas estou em constante evolução e desenvolvimento, aceito dicas e melhorias para o código ou formas diferentes que eu poderia ter desenvolvido ele.<br>
-O propósito desta API é realizar o controle de um estacionamento, possuindo as funcionalidades citadas abaixo.<br>
-- Status do Projeto: 🔧 Em Desenvolvimento
 
-### ⚙️ Funcionalidades
+## Project Status: 🔧 In Development
 
+### Description
 
-A API de Estacionamento possuí as seguintes funcinalidades:
+This API was developed to test my knowledge of back-end development and assist me in practicing during my studies in Java and Spring Boot. It is not perfect, but I am constantly evolving and developing. I welcome tips and improvements to the code or different ways I could have developed it.
 
-- Cadastro de estabelecimentos.
-- Cadastro de veículos.
-- Controle de entrada e saída de veículos.
+The purpose of this API is to control a parking lot, with the functionalities listed below.
 
-### 📚 Documentação
+### ⚙️ Features
 
-Está API possuí uma documentação com suas rotas, pórem para acessala é preciso inicializar a aplicação pois ainda não possuí um link on-live.<br>
-Após iniciar a aplicação basta acessar o seguinte link para visualizar a documentação:<br>
+The Parking API has the following functionalities:
+
+- Registration of establishments.
+- Registration of vehicles.
+- Control of vehicle entry and exit.
+
+### 📚 Documentation
+
+This API has documentation with its routes, but to access it, you need to start the application as it does not yet have an online link. After starting the application, simply access the following link to view the documentation:
+
 [Swagger Docs](http://localhost:8080/swagger-ui.html) - **http://localhost:8080/swagger-ui.html**
 
-### 📝Topicos
+### 📝 Table of Contents
 
+- [Getting Started](#-getting-started)
+- [How to Run](#how-to-run)
+- [Development](#-development)
+- [Authors](#authors)
 
-- [Começando](#-começando)
+## 🚀 Getting Started
 
-- [Como rodar](#%EF%B8%8F-como-rodar)
+First, you need to clone the project to your machine. To do this, open Git in any terminal and run the following command:
 
-- [Desenvolvimento](#-desenvolvimento)
-
-- [Autores](#%EF%B8%8F-autores)
-
-## 🚀 Começando
-
-Primeiramente é preciso clonar o projeto na sua máquina, para isso, abra o git em algum terminal e rode o seguinte comando:
-```
+```sh
 $ git clone https://github.com/henrique-leme/backend-test-java.git
 ```
 
-### 📋 Pré-requisitos
+### 📋 Prerequisites
 
-Para rodar e instalar o projeto é preciso ter instalado
+To run and install the project, you need to have installed:
+
 - Java 8
-- Postgres
-- Insomnia ou Postman
-- Git 
-- IDE de sua escolha ( recomendo Intellij ou VS Code )
+- PostgreSQL
+- Insomnia or Postman
+- Git
+- IDE of your choice (I recommend IntelliJ or VS Code)
 
-### 🔧 Instalação
+### 🔧 Installation
 
-Tendo os requisitos acima você ira abrir o projeto na sua IDE.
+With the prerequisites met, you will open the project in your IDE.
 
-- No caso do VS Code, é recomendado que você tenha o ambiente Java configurado, recomendo seguir os passos no vídeo do link abaixo até os 5:20 minutos de vídeo, após isso podera abrir o projeto no VS Code normalmente
+- In the case of VS Code, it is recommended that you have the Java environment configured. I recommend following the steps in the video below until 5:20 minutes, after which you can open the project in VS Code normally:
 
-(https://www.youtube.com/watch?v=K2OD-3NBE6s&ab_channel=HélioKamakawa) 
+  [Java Environment Setup](https://www.youtube.com/watch?v=K2OD-3NBE6s&ab_channel=HélioKamakawa)
 
-- Para abrir o projeto no Intellij, ele ira automaticamente detectar que é um projeto Maven e ira configurar as dependencias, caso tenha algum problema e dificuldade, consulte o link abaixo
+- To open the project in IntelliJ, it will automatically detect that it is a Maven project and will configure the dependencies. If you encounter any problems or difficulties, consult the links below:
 
-(https://www.jetbrains.com/help/idea/import-project-or-module-wizard.html#export-project)
-(https://www.jetbrains.com/idea/guide/tutorials/working-with-maven/importing-a-project/)
+  [Import Project or Module Wizard](https://www.jetbrains.com/help/idea/import-project-or-module-wizard.html)
+  [Importing a Project](https://www.jetbrains.com/idea/guide/tutorials/working-with-maven/importing-a-project/)
 
+### 🔌 Database Setup
 
+To properly run the project, you need to configure the database according to your environment. To do this, go to the **application.properties** file and change the following lines:
 
+```properties
+# Create a PostgreSQL database with the name (api_parking)
+spring.datasource.url=jdbc:postgresql://localhost:5432/api_parking
 
-### 🔌Iniciando/Configurando banco de dados
+# Replace (your_username) with your database username or use the project's default username (postgres)
+spring.datasource.username=your_username
 
-Para rodar o projeto propriamente, é preciso configurar o banco de dados de acordo com o seu ambiente, para isso vá até o arquivo **application.properties** e altere as seguintes linhas:
-
-```
-# Aqui você ira criar um banco de dados postgre com o nome (api_estacionamento)
-spring.datasource.url=jdbc:postgresql://localhost:5432/api_estacionamento
-
-# coloque nesta linha seu usuario do banco de dados no local de (seu_nome_de_usuario) ou utilize um com o nome padrão do projeto (postgres)
-spring.datasource.username=seu_nome_de_usuario
-
-# coloque nesta linha a sua senha do banco de dados ou utilize a padrão do projeto (postgres)
-spring.datasource.password=sua_senha 
+# Replace (your_password) with your database password or use the project's default password (postgres)
+spring.datasource.password=your_password
 ```
 
-## ⚙️ Como rodar
+## ⚙️ How to Run
 
-Após configurar e iniciar seu banco de dados, navegue até o arquivo **RestapiApplication** para rodar o projeto
+After configuring and starting your database, navigate to the **RestapiApplication** file to run the project:
 
+```sh
+restapi/src/main/java/com/parking/restapi/RestapiApplication.java
 ```
-restapi/src/main/java/com/estacionamento/restapi/RestapiApplication.java
-```
 
-### 🛠 Como testar os end-points
+### 🛠 How to Test Endpoints
 
-Para rodar os endpoints e testar as rotas, você pode importar as configurações no diretório do repositório e testar as requisições no Insominia ou no Postman ( recomendado o Insomnia )
+To test the endpoints and routes, you can import the configurations from the repository directory and test the requests in Insomnia or Postman (Insomnia is recommended).
 
 - [Json Model]()
 - [Har Model]()
 
+## 📦 Development
 
-## 📦 Desenvolvimento
+To implement this API in a live system, simply connect it to a database and use the API endpoints.
 
-Para implementar está API em um sistema ativo, basca conectala a um banco de dados e utilizar os end-points da API
+### 🛠️ Built With
 
-### 🛠️ Construído com
+The following tools were used to develop this project:
 
-Para o desenvolvimento deste projeto, foram utilizadas as seguintes ferramentas
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/) - The development environment
+- [Maven](https://maven.apache.org/) - Dependency Management
+- [Spring Boot](https://spring.io/projects/spring-boot) - The framework used
+- [PostgreSQL](https://www.postgresql.org) - The database used
 
-- [Intellij IDEA](https://www.jetbrains.com/pt-br/idea/) - O ambiente de desenvolvimento
-- [Maven](https://maven.apache.org/) - Gerente de Dependência
-- [Spring Boot](https://spring.io/projects/spring-boot) - Framework utilizado
-- [PostgreSQL](https://www.postgresql.org) - Banco de dados utilizado
+### 📌 Version
 
-### 📌 Versão
-Este projeto está em sua primeira versão e está em constante desenvolvimento, caso ache algum Bug, relate ao Desenvolvedor do projeto
+This project is in its first version and is under constant development. If you find any bugs, report them to the project developer.
 
-## ✒️ Autores
+## ✒️ Authors
 
-Abaixo os autores do projeto, Henrique que desenvolveu e Rodrigo que instruiu  ao desenvolvimento dando feedbacks para melhorias do mesmo.
-- **Henrique Leme de Brito** - _Desenvolvedor_ - [Git-Hub](https://github.com/henrique-leme)
-- **Rodrigo Rodrigues** - _Project Leader_ 
+Below are the authors of the project, Henrique who developed it and Rodrigo who instructed the development by providing feedback for improvements.
 
+- **Henrique Leme de Brito** - _Developer_ - [GitHub](https://github.com/henrique-leme)
+- **Rodrigo Rodrigues** - _Project Leader_
