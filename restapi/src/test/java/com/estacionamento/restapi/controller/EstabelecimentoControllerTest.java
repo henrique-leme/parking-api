@@ -59,7 +59,7 @@ public class EstabelecimentoControllerTest {
 
     @Test
     void delete_returnDeletedEstabelecimento_WhenSucessful() {
-        ResponseEntity<String> estabelecimentoEntity = estabelecimentoController.deleteEstabelecimento(VALID_ESTABELECIMENTO.getId());
+        ResponseEntity<Void> estabelecimentoEntity = estabelecimentoController.deleteEstabelecimento(VALID_ESTABELECIMENTO.getId());
 
         Assertions.assertThat(estabelecimentoEntity).isNotNull();
         Assertions.assertThat(estabelecimentoEntity.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
