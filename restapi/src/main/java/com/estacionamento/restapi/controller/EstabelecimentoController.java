@@ -53,7 +53,7 @@ public class EstabelecimentoController {
         return ResponseEntity.ok(body);
     }
 
-    //Busca um Estabeelcimento pelo CNPJ
+    //Busca um Estabelecimento pelo CNPJ
     @GetMapping(path = "/cnpj/{cnpj}")
     @ApiOperation(value = "Essa rota é responsavel por buscar um Estabelecimento por CNPJ ")
     public ResponseEntity<EstabelecimentoDTO> findEstabelecimentoByCNPJ(@PathVariable(value = "cnpj")String cnpj){
@@ -75,7 +75,7 @@ public class EstabelecimentoController {
     //Deleta um Estabelecimento
     @DeleteMapping(path = "/{id}")
     @ApiOperation(value = "Essa rota é responsavel por deletar um Estabelecimento")
-    public ResponseEntity<EstabelecimentoDTO> deleteEstabelecimento(@PathVariable(value = "id") Integer id) {
+    public ResponseEntity<Void> deleteEstabelecimento(@PathVariable(value = "id") Integer id) {
         estabelecimentoService.delete(id);
 
         return ResponseEntity.noContent().build();
